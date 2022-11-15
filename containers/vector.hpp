@@ -6,7 +6,7 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:44:12 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/11/15 14:39:07 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:53:46 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "random_iterator.hpp"
 #include "enable_if.hpp"
 #include "is_integral.hpp"
-#include "utils.hpp"
+#include "distance.hpp"
 #include "lexicographical_compare.hpp"
 #include "pair.hpp"
 #include "nullptr.hpp"
