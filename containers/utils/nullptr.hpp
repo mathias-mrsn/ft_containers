@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 13:59:43 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/14 15:02:54 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:35:28 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NULLPTR
-# define NULLPTR
+#pragma once
 
 #include "ft_containers.hpp"
 
@@ -40,5 +39,3 @@ struct nullptr_t
 #define _nullptr	nullptr_t(0)
 
 _END_NAMESPACE_FT
-
-#endif

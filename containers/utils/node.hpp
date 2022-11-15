@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 13:29:36 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/14 15:00:56 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:35:39 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NODE_HPP
-# define NODE_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 #include "nullptr.hpp"
@@ -82,5 +81,3 @@ struct Node {
 };
 
 _END_NAMESPACE_FT
-
-#endif /* NODE_HPP */

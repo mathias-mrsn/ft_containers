@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 18:14:03 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/23 10:24:46 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:35:10 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RANDOM_ITERATOR_HPP
-# define RANDOM_ITERATOR_HPP
+#pragma once
 
 #include "iterator.hpp"
 #include "nullptr.hpp"
@@ -191,5 +190,3 @@ operator>=(	const ft::random_iterator<Iterator1>& lhs,
 }
 
 _END_NAMESPACE_FT
-
-#endif /* RANDOM_ITERATOR_HPP */

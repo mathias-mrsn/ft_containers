@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:21:41 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/12 11:57:11 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:36:33 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXICOGRAPHICAL_COMPARE_HPP
-# define LEXICOGRAPHICAL_COMPARE_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 
@@ -70,5 +69,3 @@ lexicographical_compare(InputIt1 first1, InputIt1 last1, InputIt2 first2, InputI
 }
 
 _END_NAMESPACE_FT
-
-#endif /* LEXICOGRAPHICAL_COMPARE_HPP */

@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 10:50:24 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/22 15:14:14 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:38:56 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SET_HPP
-# define SET_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 #include "pair.hpp"
@@ -296,5 +295,3 @@ void swap (const ft::set<Key,Compare,Alloc>& lhs, const ft::set<Key,Compare,Allo
 }
 
 _END_NAMESPACE_FT
-
-#endif /* SET_HPP */

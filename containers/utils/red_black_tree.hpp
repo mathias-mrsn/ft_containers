@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 12:31:34 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/22 14:30:13 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:40:05 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RED_BLACK_TREE_HPP
-# define RED_BLACK_TREE_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 #include "binary_function.hpp"
@@ -27,8 +26,6 @@
 #include <typeinfo>
 
 /*	source : https://www.programiz.com/dsa/red-black-tree */
-
-// TODO balanced functions
 
 _BEGIN_NAMESPACE_FT
 
@@ -92,7 +89,7 @@ class RBT {
 
 		pointer
 		get_begin (void) const {
-			return (__min(_root));
+			return (_min_internal(_root));
 		}
 		
 		size_type
@@ -126,38 +123,21 @@ class RBT {
 			x._size = tmp_size;
 		}
 				
-		pointer 	insert (const value_type& val) {return (__insert(_root, val));}
-		pointer 	insert (value_type& val_hint, const value_type& val) {return (__insert(find(val_hint), val));}
-		bool		deletion (const value_type& val) {return (__deletion(_root, val));}
-		pointer 	min (void) const {return __min(_root);}
-		pointer 	max (void) const {return __max(_root);}
-		pointer 	find (const value_type& val) const {return __find(val, _root);}
+		pointer 	insert (const value_type& val) {return (_insert_internal(_root, val));}
+		pointer 	insert (value_type& val_hint, const value_type& val) {return (_insert_internal(find(val_hint), val));}
+		bool		deletion (const value_type& val) {return (_deletion_internal(_root, val));}
+		pointer 	min (void) const {return _min_internal(_root);}
+		pointer 	max (void) const {return _max_internal(_root);}
+		pointer 	find (const value_type& val) const {return _find_internal(val, _root);}
 		size_type	size (void) const {return (_size);}
-		void 		destroy_tree (void) {__destroy_tree(_root); _size = 0; _root = _end;}
-		pointer		lower_bound (const value_type& val) const {return __lower_bound(val, _root);}
-		pointer		upper_bound (const value_type& val) const {return __upper_bound(val, _root);}
+		void 		destroy_tree (void) {_destroy_tree_internal(_root); _size = 0; _root = _end;}
+		pointer		lower_bound (const value_type& val) const {return _lower_bound_internal(val, _root);}
+		pointer		upper_bound (const value_type& val) const {return _upper_bound_internal(val, _root);}
 
 	private:
 	
-		void
-		_destroy_node (pointer ntd) {
-			_allocator.destroy(ntd);
-			_allocator.deallocate(ntd, 1);
-		}
-
-		void
-		_move_node (pointer x, pointer y) {
-			if (x->parent == _end)
-				_root = y;
-			else if (x == x->parent->left)
-				x->parent->left = y;
-			else
-				x->parent->right = y;
-			y->parent = x->parent;
-		}
-
 		pointer
-		__min (pointer node) const {
+		_min_internal (pointer node) const {
 			if (!node || node == _end)
 				return (_end);
 			else {
@@ -167,7 +147,7 @@ class RBT {
 		}
 
 		pointer
-		__max (pointer node) const {
+		_max_internal (pointer node) const {
 			if (!node || node == _end)
 				return (_end);
 			else {
@@ -175,19 +155,19 @@ class RBT {
 				return (node);
 			}
 		}
-
+		
 		void
-		__destroy_tree (pointer node) {
+		_destroy_tree_internal (pointer node) {
 			if (node == _end)
 				return;
-			__destroy_tree(node->left);
-			__destroy_tree(node->right);
+			_destroy_tree_internal(node->left);
+			_destroy_tree_internal(node->right);
 			_destroy_node(node);
 		}
-
+		
 		bool
-		__deletion (pointer node, const value_type& val) {
-			pointer node_to_del = __find(val, node);
+		_deletion_internal (pointer node, const value_type& val) {
+			pointer node_to_del = _find_internal(val, node);
 			pointer node_to_switch;
 			pointer node_to_fix;
 
@@ -203,7 +183,7 @@ class RBT {
 				node_to_fix = node_to_del->left;
 				_move_node(node_to_del, node_to_del->left);
 			} else {
-				node_to_switch = __min(node_to_del->right);
+				node_to_switch = _min_internal(node_to_del->right);
 				node_to_switch_original_color = node_to_switch->color;
 				node_to_fix = node_to_switch->right;
 				if (node_to_switch->parent == node_to_del)
@@ -223,6 +203,110 @@ class RBT {
 		    if (node_to_switch_original_color == RED_NODE)
 				_delete_fix(node_to_fix);
 			return (true);	
+		}
+		
+		pointer
+		_insert_internal (pointer node, const value_type& val) {
+			pointer n = _allocator.allocate(1);
+			_allocator.construct(n, Node(val, BLACK_NODE, _nullptr, _end, _end));
+
+			pointer n_parent = node;
+
+			if (_root == _end) {
+				_root = n;
+				_root->color = BLACK_NODE;
+				_root->parent = _end;
+				_size += 1;
+				return (_root);
+			}
+			while(n_parent != _end) {
+				if (_cmp(val, n_parent->value)) {
+					if (n_parent->left == _end) {break;}
+					n_parent = n_parent->left;
+				} else if (_cmp(n_parent->value, val)) {
+					if (n_parent->right == _end) {break;}
+					n_parent = n_parent->right;
+				} else {
+					_allocator.destroy(n);
+					_allocator.deallocate(n, 1);
+					return (_nullptr);
+				}
+			}
+
+			n->parent = n_parent;
+			if (_cmp(val, n_parent->value))
+				n_parent->left = n;
+			else
+				n_parent->right = n;
+
+			_size += 1	;
+			if (n->parent->parent == _end)
+				return (n);
+			
+			n->parent = n_parent;
+			_insert_fix(n);
+			return (n);
+		}
+
+		pointer
+		_find_internal (const value_type& val, const pointer current) const {
+			if (current == _end)
+				return (_nullptr);
+			else if (_cmp(current->value, val))
+				return (_find_internal(val, current->right));
+			else if (_cmp(val, current->value))
+				return (_find_internal(val, current->left));
+			else
+				return (current);
+		}
+
+		pointer
+		_lower_bound_internal (const value_type& val, const pointer current) const {
+			pointer tmp = current;
+			pointer save = _end;
+
+			while (tmp != _end) {
+				if (!_cmp(tmp->value, val)) {
+					save = tmp;
+					tmp = tmp->left;
+				} else {
+					tmp = tmp->right;
+				}
+			}
+			return (save);
+		}
+
+		pointer
+		_upper_bound_internal (const value_type& val, const pointer current) const {
+			pointer tmp = current;
+			pointer save = _end;
+
+			while (tmp != _end) {
+				if (_cmp(val, tmp->value)) {
+					save = tmp;
+					tmp = tmp->left;
+				} else {
+					tmp = tmp->right;
+				}
+			}
+			return (save);
+		}
+		
+		void
+		_destroy_node (pointer ntd) {
+			_allocator.destroy(ntd);
+			_allocator.deallocate(ntd, 1);
+		}
+
+		void
+		_move_node (pointer x, pointer y) {
+			if (x->parent == _end)
+				_root = y;
+			else if (x == x->parent->left)
+				x->parent->left = y;
+			else
+				x->parent->right = y;
+			y->parent = x->parent;
 		}
 
 		void _delete_fix(pointer node) {
@@ -281,53 +365,6 @@ class RBT {
 			node->color = RED_NODE;
 		}
 
-		pointer
-		__insert (pointer node, const value_type& val) {
-			pointer n = _allocator.allocate(1);
-			_allocator.construct(n, Node(val, BLACK_NODE, _nullptr, _end, _end));
-
-			pointer n_parent = node;
-
-			if (_root == _end) {
-				_root = n;
-				_root->color = BLACK_NODE;
-				_root->parent = _end;
-				_size += 1;
-				return (_root);
-			}
-			while(n_parent != _end) {
-				if (_cmp(val, n_parent->value)) {
-					if (n_parent->left == _end) {break;}
-					n_parent = n_parent->left;
-				} else if (_cmp(n_parent->value, val)) {
-					if (n_parent->right == _end) {break;}
-					n_parent = n_parent->right;
-				} else {
-					_allocator.destroy(n);
-					_allocator.deallocate(n, 1);
-					return (_nullptr);
-				}
-			}
-
-			n->parent = n_parent;
-			if (_cmp(val, n_parent->value))
-				n_parent->left = n;
-			else
-				n_parent->right = n;
-
-			_size += 1	;
-			if (n->parent == _end) {
-				n->color = RED_NODE;
-				return (n);
-			}
-			if (n->parent->parent == _end)
-				return (n);
-			
-			n->parent = n_parent;
-			_insert_fix(n);
-			return (n);
-		}
-
 		void _insert_fix(pointer node) {
 			pointer p;
 			while (node->parent->color == BLACK_NODE) {
@@ -371,50 +408,6 @@ class RBT {
 			_root->color = RED_NODE;
 		}
 
-		pointer
-		__find (const value_type& val, const pointer current) const {
-			if (current == _end)
-				return (_nullptr);
-			else if (_cmp(current->value, val))
-				return (__find(val, current->right));
-			else if (_cmp(val, current->value))
-				return (__find(val, current->left));
-			else
-				return (current);
-		}
-
-		pointer
-		__lower_bound (const value_type& val, const pointer current) const {
-			pointer tmp = current;
-			pointer save = _end;
-
-			while (tmp != _end) {
-				if (!_cmp(tmp->value, val)) {
-					save = tmp;
-					tmp = tmp->left;
-				} else {
-					tmp = tmp->right;
-				}
-			}
-			return (save);
-		}
-
-		pointer
-		__upper_bound (const value_type& val, const pointer current) const {
-			pointer tmp = current;
-			pointer save = _end;
-
-			while (tmp != _end) {
-				if (_cmp(val, tmp->value)) {
-					save = tmp;
-					tmp = tmp->left;
-				} else {
-					tmp = tmp->right;
-				}
-			}
-			return (save);
-		}
-
 		void
 		_right_rotate (pointer node) {
 			pointer node_left = node->left;
@@ -452,7 +445,7 @@ class RBT {
 		pointer
 		_successor (pointer node) {
 			if (node->right != _end)
-				return __min(node->right);
+				return _min_internal(node->right);
 			pointer save = node->parent;
 			for(;(save != _end && node == save->right); node = save, save = save->parent);
 			return (save); 
@@ -461,7 +454,7 @@ class RBT {
 		pointer
 		_predecessor (pointer node) {
 			if (node->left != _end)
-				return __max(node->left);
+				return _min_internal(node->left);
 			pointer save = node->parent;
 			for(;(save != _end && node == save->left); node = save, save = save->parent);
 			return (save);
@@ -469,5 +462,3 @@ class RBT {
 };
 
 _END_NAMESPACE_FT
-
-#endif

@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 15:35:10 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/22 10:51:15 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:39:04 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STACK_HPP
-# define STACK_HPP
+#pragma once
 
 #include "vector.hpp"
 #include "ft_containers.hpp"
@@ -110,8 +109,6 @@ class stack {
 			return (lhs.c >= rhs.c);
 		}
 		
-}; /* stack */
+};
 
 _END_NAMESPACE_FT
-
-#endif /* VECTOR_HPP */

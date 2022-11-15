@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 11:23:20 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/13 11:11:40 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:35:17 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PAIR_HPP
-# define PAIR_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 
@@ -89,5 +88,3 @@ pair< T1, T2 > make_pair (T1 x, T2 y) {
 }
 
 _END_NAMESPACE_FT
-
-#endif /* PAIR_HPP */

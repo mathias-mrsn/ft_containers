@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 14:27:13 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/23 10:28:49 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:36:27 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NODE_ITERATORS_HPP
-# define NODE_ITERATORS_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 #include "node.hpp"
@@ -175,5 +174,3 @@ class node_iterator : public ft::iterator<std::bidirectional_iterator_tag, T> {
 };
 
 _END_NAMESPACE_FT
-
-#endif /* NODE_ITERATORS_HPP */

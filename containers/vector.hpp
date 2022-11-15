@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 16:44:12 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/23 10:21:45 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:39:07 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_HPP
-# define VECTOR_HPP
+#pragma once
 
 #include <memory>
 #include <sstream>
@@ -478,7 +477,7 @@ class vector {
 			return (_allocator);
 		}
 
-}; /* vector */
+};
 
 template<class T, class Alloc>
 bool
@@ -523,5 +522,3 @@ swap (ft::vector<T,Alloc>& lhs, ft::vector<T,Alloc>& rhs) {
 }
 	
 _END_NAMESPACE_FT
-
-#endif /* VECTOR_HPP */

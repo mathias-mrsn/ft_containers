@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 12:36:01 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/22 14:46:11 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:38:59 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  MAP_HPP
-# define MAP_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 #include "pair.hpp"
@@ -23,12 +22,6 @@
 
 
 _BEGIN_NAMESPACE_FT
-
-/*
-	* Check list of map
-
-	[ ] at()
-*/
 
 template<	class Key,
 			class T,
@@ -44,7 +37,6 @@ class map {
 	
 		class value_compare : public binary_function<value_type, value_type, bool> {
 			
-			// * Allow map to use value_compare protected functions
 			friend class map;
 			
 			protected:
@@ -296,7 +288,7 @@ class map {
 			return (ft::make_pair(lower_bound(k), upper_bound(k)));
 		}
 
-}; /* map */
+};
 
 template< class Key, class T, class Compare, class Alloc >
 bool operator== (const ft::map<Key,T,Compare,Alloc>& lhs, const ft::map<Key,T,Compare,Alloc>& rhs) {
@@ -334,5 +326,3 @@ void swap (ft::map<Key,T,Compare,Alloc>& lhs, ft::map<Key,T,Compare,Alloc>& rhs)
 }
 
 _END_NAMESPACE_FT
-
-#endif /* MAP_HPP */

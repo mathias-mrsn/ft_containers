@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 09:55:37 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/12 11:56:34 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:36:46 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_INTEGRAL_HPP
-# define IS_INTEGRAL_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 
@@ -46,5 +45,3 @@ template<>	struct is_integral<unsigned long>		: public true_type {};
 template<>	struct is_integral<unsigned long long>	: public true_type {};
 
 _END_NAMESPACE_FT
-
-#endif /* IS_INTEGRAL_HPP */

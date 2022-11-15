@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 10:55:18 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/23 10:26:11 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:36:40 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATOR_HPP
-# define ITERATOR_HPP
+#pragma once
 
 #include <iostream>
 #include "ft_containers.hpp"
@@ -61,5 +60,3 @@ struct iterator_traits<const T*> {
 };
 		
 _END_NAMESPACE_FT
-
-#endif

@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 11:44:10 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/06/16 14:55:17 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:34:26 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REVERSE_ITERATOR_HPP
-# define REVERSE_ITERATOR_HPP
+#pragma once
 
 #include "iterator.hpp"
 #include "enable_if.hpp"
@@ -233,5 +232,3 @@ operator>=(	const reverse_iterator<Iterator>& lhs,
 }
 
 _END_NAMESPACE_FT
-
-#endif /* REVERSE_ITERATOR_HPP */

@@ -6,12 +6,11 @@
 /*   By: mamaurai <mamaurai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 15:42:33 by mamaurai          #+#    #+#             */
-/*   Updated: 2022/05/25 17:48:39 by mamaurai         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:36:58 by mamaurai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENABLE_IF_HPP
-# define ENABLE_IF_HPP
+#pragma once
 
 #include "ft_containers.hpp"
 
@@ -24,5 +23,3 @@ template<class T>
 struct enable_if<true, T> {typedef T type;};
 
 _END_NAMESPACE_FT
-
-#endif
