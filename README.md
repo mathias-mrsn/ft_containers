@@ -4,7 +4,7 @@ The sharing of this project on my GitHub aims to help peoples to open their mind
 
 # ft_containers			[![mamaurai's 42 ft_containers Score](https://badge42.vercel.app/api/v2/cl1l4qz93000609l4yixitcl4/project/2633025)](https://github.com/JaeSeoKim/badge42)
 
-**cub3d** is a project from the **42** Common Core. The project aims to recreate few containers form the STL (Standard Template Library)
+**ft_containers** is a project from the **42** Common Core. The project aims to recreate few containers form the STL (Standard Template Library)
 
 ## Implementations
 
